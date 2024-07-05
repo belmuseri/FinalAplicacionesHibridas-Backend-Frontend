@@ -1,0 +1,22 @@
+{
+    "users": [
+        { 
+            "id": 1, 
+            "name": "Juan", 
+            "email": "Juan@mail.com"
+        },
+        { 
+            "id": 2, 
+            "name": "Pedro", 
+            "email": "pedro@mail.com"
+        }
+    ],
+    "posts": [
+        { "id":1, "title": "nuevo posteo 1", "userId": 1 },
+        { "id":2, "title": "nuevo posteo 2", "userId": 1 },
+        { "id":3, "title": "nuevo posteo 3", "userId": 2 }
+
+    ]
+    
+
+}
