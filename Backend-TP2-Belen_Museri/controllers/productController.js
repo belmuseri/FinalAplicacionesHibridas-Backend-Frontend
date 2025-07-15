@@ -96,7 +96,7 @@ const deleteProductById = async (req, res) => {
   };
 
   
-// Oobtiene los productos por el usuario ID
+// Obtiene los productos por el usuario ID
 const getPproductForUser = async (req, res) => {
     try {
         const userId = req.params.userId;
