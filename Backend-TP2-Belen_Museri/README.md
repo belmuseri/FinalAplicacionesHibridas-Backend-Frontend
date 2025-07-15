@@ -1,3 +1,3 @@
 # Materia Aplicaciones Hibridas
-Primer parcial
+Tp 2
 Belen Museri

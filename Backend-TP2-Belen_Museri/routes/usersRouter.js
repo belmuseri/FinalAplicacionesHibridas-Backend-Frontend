@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, getUsers, login } from '../controllers/userController.js'
+import { createUser, getUsers, login, updateUser } from '../controllers/userController.js'
 const router = express.Router();
 router.use( express.json());
 
@@ -15,6 +15,7 @@ router.post('/', createUser );
 
 router.post('/login', login);
 
+router.put('/:id', updateUser);
 
 router.delete('/:id', (req, res) => {
     console.log('DELETE Users')

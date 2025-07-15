@@ -63,5 +63,28 @@ async function getUsers( req, res ){
     }
 }
 
-export { createUser, getUsers, login }
+// Editar User
+async function updateUser(req, res) {
+    try {
+      const { id } = req.params;
+      const { name, email, password } = req.body;
+  
+      const updateData = { name, email, password };
+  
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, salt);
+        updateData.password = hashedPassword;
+      }
+  
+      const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+  
+      res.status(200).json({ message: 'ok', data: updatedUser });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error al actualizar usuario', data: [] });
+    }
+}
+
+  
+export { createUser, getUsers, login, updateUser };
 

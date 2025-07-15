@@ -71,13 +71,13 @@ const deleteProductById = async (req, res) => {
     try {
       const productId = req.params.id;
   
-      // Verify that the product exists
+      // verificar que el producto exixte
       const product = await Product.findById(productId);
       if (!product) {
         return res.status(404).json({ message: "Producto no encontrado", data: [] });
       }
   
-      // Verify that the user is the author of the product
+      // verificar que el usuario es el autor del producto
       if (!req.user || !req.user.id) {
         return res.status(403).json({ message: "No tienes permisos para eliminar este producto", data: [] });
       }
@@ -94,9 +94,6 @@ const deleteProductById = async (req, res) => {
       res.status(500).json({ message: error.message, data: [] });
     }
   };
-  
-  
-
 
   
 // Oobtiene los productos por el usuario ID
