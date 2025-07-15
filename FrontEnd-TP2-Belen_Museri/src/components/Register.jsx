@@ -42,7 +42,7 @@ const Register = () => {
   };
 
   return (
-    <div className="container container-height">
+    <div className="container container-height height-100vh">
       <h2>Registrarme</h2>
       {successMessage && <p className="mensaje-success">{successMessage}</p>}
       <form className="form" onSubmit={handleSubmit}>

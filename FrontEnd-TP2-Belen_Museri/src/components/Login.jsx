@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form container container-height">
+    <div className="login-form container container-height height-100vh">
       <h2>Login</h2>
       {errorMessage && <div className="mensaje-error-login">{errorMessage}</div>}
       <form className="form" onSubmit={handleSubmit}>

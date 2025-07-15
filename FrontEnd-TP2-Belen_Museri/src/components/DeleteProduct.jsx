@@ -59,7 +59,7 @@ const DeleteProduct = () => {
         {products.map(product => (
           <div className="card" key={product._id}>
             <h4>{product.name}</h4>
-            <button className="primary-button" onClick={() => handleDelete(product._id)}>Eliminar</button>
+            <button className="danger-button" onClick={() => handleDelete(product._id)}>Eliminar</button>
           </div>
         ))}
       </div>

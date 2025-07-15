@@ -12,6 +12,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Private from './components/Private';
 import CreateProduct from './components/CreateProduct';
 import DeleteProduct from './components/DeleteProduct';
+import EditUser from './components/EditUser';
+import ProductListEdit from './components/ProductListEdit';
+import EditProduct from './components/EditProduct';
 
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import './App.css';
@@ -68,7 +71,10 @@ function App() {
               <Route path="/registro" element={<Register />} />
               <Route path="/protected" element={<ProtectedRoute element={Private} />} />
               <Route path="/create-product" element={<CreateProduct />} />
+              <Route path="/edit-user" element={<EditUser />} />
               <Route path="/delete-product" element={<DeleteProduct />} />
+              <Route path="/edit-products" element={<ProductListEdit />} />
+              <Route path="/edit-products/:id" element={<EditProduct />} />
               <Route path="*" element={<NoFound />} />
             </Routes>
           </div>
@@ -76,7 +82,7 @@ function App() {
       </AuthProvider>
 
       <footer >
-        <p className='container'>TP2 Aplicaciones Híbridas 2024 - Belen Museri</p>
+        <p className='container'>TP2 Aplicaciones Híbridas 2025 - Belen Museri</p>
       </footer>
     </>
   );

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const CreateProduct = () => {
+const EditProduct = () => {
   const { user } = useAuth();
+  const { id } = useParams();
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -14,6 +16,26 @@ const CreateProduct = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Obtener datos del producto
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/products/${id}`);
+        const json = await res.json();
+        if (json.data) {
+          setFormData(json.data);
+        } else {
+          setErrorMessage("Producto no encontrado");
+        }
+      } catch (err) {
+        console.error(err);
+        setErrorMessage("Error al cargar el producto");
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (e) => {
     setFormData({
@@ -26,36 +48,37 @@ const CreateProduct = () => {
     e.preventDefault();
     try {
       if (!user || !user._id) {
-        setErrorMessage("El usuario no esta logueado o el ID no fue encontrado");
+        setErrorMessage("El usuario no está logueado o el ID no fue encontrado");
         return;
       }
 
-      const response = await fetch("http://localhost:3000/products", {
-        method: "POST",
+      const res = await fetch(`http://localhost:3000/products/${id}`, {
+        method: 'PUT',
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem('jwt')}`
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
         },
-        body: JSON.stringify({ ...formData }),
+        body: JSON.stringify(formData)
       });
 
-      const json = await response.json();
-      if (json.message === 'ok') {
-        console.log("Producto creado exitosamente");
-        navigate('/products', { state: { message: "Producto creado exitosamente" } }); 
-
+      const json = await res.json();
+      if (json.message === 'Producto actualizado correctamente') {
+        navigate('/products', { state: { message: "Producto actualizado con éxito" } });
       } else {
-        setErrorMessage("Error al crear el producto");
+        setErrorMessage("Error al actualizar el producto");
       }
     } catch (error) {
-      setErrorMessage("Error en el servidor");
-      console.error("Error:", error);
+      console.error(error);
+      setErrorMessage("Error del servidor");
     }
   };
 
   return (
     <div className="container">
-      <h2>Crear nuevo producto</h2>
+      <h2>Editar Producto</h2>
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       <form className='form' onSubmit={handleSubmit}>
         <label htmlFor="name">Nombre</label>
         <input
@@ -96,7 +119,7 @@ const CreateProduct = () => {
           onChange={handleChange}
         />
 
-        <label htmlFor="img">Descripción</label>  
+        <label htmlFor="description">Descripción</label>
         <textarea
           id="description"
           name="description"
@@ -105,12 +128,10 @@ const CreateProduct = () => {
           required
         />
 
-        <button className='primary-button' type="submit">Crear Producto</button>
+        <button className='primary-button' type="submit">Guardar Cambios</button>
       </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };
 
-export default CreateProduct;
-
+export default EditProduct;

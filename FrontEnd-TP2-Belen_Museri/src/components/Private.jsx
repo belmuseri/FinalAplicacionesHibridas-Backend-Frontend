@@ -6,16 +6,17 @@ const Private = (  ) => {
 
     return ( 
         <>
-         <div className="mensaje-login container">
+         <div className="container">
             {message && <p>{message}</p>} 
          </div>
-        <div className="container container-height">
+        <div className="container container-height height-100vh">
             <h2>Admin Panel</h2>
             <div className="admin-buttons">
             <Link to="/create-product" className="button-admin">Crear Producto</Link>
+            <Link to="/edit-products" className="button-admin">Editar Producto</Link>
             <Link to="/delete-product" className="button-admin">Eliminar Producto</Link>
             <Link to="/edit-user" className="button-admin">Editar Usuario</Link>
-            <Link to="/change-password" className="button-admin">Cambiar Contraseña</Link>
+            {/* <Link to="/change-password" className="button-admin">Cambiar Contraseña</Link> */}
             </div>
         </div>
         </> 
