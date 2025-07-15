@@ -17,6 +17,7 @@ La aplicación permite a los usuarios registrarse, iniciar sesión y editar su u
 - Registro de usuarios
 - Inicio de sesión de usuarios
 - Creación de nuevos productos
+- Edición de productos
 - Eliminación de productos existentes
 - Visualización de detalles de productos
 
