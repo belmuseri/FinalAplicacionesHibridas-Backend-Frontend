@@ -54,10 +54,10 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container height-100vh">
       <h2>Crear nuevo producto</h2>
       <form className='form' onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre</label>
+        <label htmlFor="name">Nombre del producto</label>
         <input
           type="text"
           id="name"

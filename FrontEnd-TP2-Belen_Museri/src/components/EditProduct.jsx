@@ -80,7 +80,7 @@ const EditProduct = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <form className='form' onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre</label>
+        <label htmlFor="name">Nombre del producto</label>
         <input
           type="text"
           id="name"
