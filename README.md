@@ -15,6 +15,7 @@ La aplicación permite a los usuarios registrarse, iniciar sesión y editar su u
 ## Funcionalidades Principales
 
 - Registro de usuarios
+- Edición de usuarios
 - Inicio de sesión de usuarios
 - Creación de nuevos productos
 - Edición de productos
